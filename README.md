@@ -6,7 +6,7 @@ FrontEnd du défi de la Nuit de l'Info 2021
 
 C'est pas bien beau, et oui j'aurais pu prendre le temps d'aller chercher un thème tout fait avec Angular. Mais ça marche nan ? Enfin... Ca marchouille au moins 😊
 
-https://apinuitdelinfo.cactus-industries.fr/
+https://nuitdelinfo.cactus-industries.fr/
 
 Fonctionnalités :
 
