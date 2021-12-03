@@ -1,0 +1,87 @@
+<div>
+  <div>
+    <h1>Sauvetage</h1>
+    <div>
+      Nom
+      <input type="text" pInputText [(ngModel)]="sauvetage.nom">
+    </div>
+    <div>
+      Date
+      <input type="date" pInputText [(ngModel)]="sauvetage.date">
+    </div>
+    <div>
+      Récit
+      <input type="text" pInputText [(ngModel)]="sauvetage.description">
+    </div>
+    <div>
+      Sources
+      <input type="text" pInputText [(ngModel)]="sauvetage.source">
+    </div>
+  </div>
+  <div>
+    <h2>Sauvés</h2>
+    <div>
+      <p-button label="Ajouter" (onClick)="addSauve()"></p-button>
+      <p-button label="Retirer" (onClick)="removeSauve()"></p-button>
+    </div>
+    <p-table [value]="sauves">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>
+            Nom
+          </th>
+          <th>
+            Prénom
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-sauve>
+        <tr>
+          <th>
+            <input type="text" [(ngModel)]="sauve.nom">
+          </th>
+          <th>
+            <input type="text" [(ngModel)]="sauve.prenom">
+          </th>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  <div>
+    <h2>Sauveteur</h2>
+    <div>
+      <p-button label="Ajouter" (onClick)="addSauveteur()"></p-button>
+      <p-button label="Retirer" (onClick)="removeSauveteur()"></p-button>
+    </div>
+    <p-table [value]="sauveteurs">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>
+            Nom
+          </th>
+          <th>
+            Prénom
+          </th>
+          <th>
+            Biographie
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-sauveteur>
+        <tr>
+          <th>
+            <input type="text" [(ngModel)]="sauveteur.nom">
+          </th>
+          <th>
+            <input type="text" [(ngModel)]="sauveteur.prenom">
+          </th>
+          <th>
+            <input type="text" [(ngModel)]="sauveteur.biographie">
+          </th>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+  <p-button label="Enregistrer" (onClick)="sauvegarder()"></p-button>
+</div>

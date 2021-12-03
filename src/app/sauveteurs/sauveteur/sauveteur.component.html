@@ -1,0 +1,73 @@
+<div>
+  <div *ngIf="sauveteur!=undefined">
+    <div *ngIf="!edition">
+      <h1>{{sauveteur.nom}} {{sauveteur.prenom}}</h1>
+      <p>{{sauveteur.valide ? "Validé ✔" : "Non validé ❌"}}</p>
+      <p>{{sauveteur.biographie}}</p>
+    </div>
+    <div *ngIf="edition">
+      <div>
+        Nom
+        <input type="text" pInputText [(ngModel)]="sauveteur.nom">
+      </div>
+      <div>
+        Prénom
+        <input type="text" pInputText [(ngModel)]="sauveteur.prenom">
+      </div>
+      <div>
+        Biographie
+        <input type="text" pInputText [(ngModel)]="sauveteur.biographie">
+      </div>
+      <div>
+        Clef admin
+        <input type="text" [(ngModel)]="key">
+      </div>
+      <div>
+        Validé
+        <input type="checkbox" [(ngModel)]="sauveteur.valide">
+      </div>
+      <p-button label="Enregistrer" (onClick)="sauvegarder()"></p-button>
+    </div>
+    <div>
+      Edition
+      <input type="checkbox" [(ngModel)]="edition">
+    </div>
+  </div>
+  <div *ngIf="sauveteur==undefined">
+    Chargement du sauveteur...
+  </div>
+  <div *ngIf="sauvetages != undefined">
+    <p-table [value]="sauvetages" dataKey="id" sortField="date">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>
+            Date
+          </th>
+          <th>
+            Nom
+          </th>
+          <th>
+            Vérifié
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-sauvetage>
+        <tr (dblclick)="onSauvetageClick(sauvetage)">
+          <th>
+            {{sauvetage.date}}
+          </th>
+          <th>
+            {{sauvetage.nom}}
+          </th>
+          <th>
+            {{sauvetage.valide}}
+          </th>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  <div *ngIf="sauvetages==undefined">
+    Chargement des sauvetages...
+  </div>
+
+</div>

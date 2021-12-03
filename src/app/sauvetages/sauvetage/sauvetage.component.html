@@ -1,0 +1,70 @@
+<div>
+  Sauvetage
+  <div *ngIf="sauvetage!=undefined">
+    <div *ngIf="!edition">
+      <h1>{{sauvetage.nom}} {{sauvetage.valide ? "✔" : "❌ Pas encore validé" }}</h1>
+      <h2>{{sauvetage.date}}</h2>
+      <h3>Récit du sauvetage :</h3>
+      <p>{{sauvetage.description}}</p>
+      <br><br>
+      <h3>Sources :</h3>
+      <p>{{sauvetage.source}}</p>
+    </div>
+    <div *ngIf="edition">
+      <div>
+        Nom
+        <input type="text" pInputText [(ngModel)]="sauvetage.nom">
+      </div>
+      <div>
+        Date
+        <input type="date" pInputText [(ngModel)]="sauvetage.date">
+      </div>
+      <div>
+        Récit
+        <input type="text" pInputText [(ngModel)]="sauvetage.description">
+      </div>
+      <div>
+        Sources
+        <input type="text" pInputText [(ngModel)]="sauvetage.source">
+      </div>
+      <div>
+        Clef admin
+        <input type="text" [(ngModel)]="key">
+      </div>
+      <div>
+        Validé
+        <input type="checkbox" [(ngModel)]="sauvetage.valide">
+      </div>
+      <p-button label="Enregistrer" (onClick)="sauvegarder()"></p-button>
+    </div>
+    <div>
+      Edition
+      <input type="checkbox" [(ngModel)]="edition">
+    </div>
+  </div>
+  <div *ngIf="sauvetage==undefined">
+    Chargement...
+  </div>
+  <div *ngIf="sauves!=undefined">
+    <h1>Sauvés lors du sauvetage :</h1>
+    <p-table [value]="sauves">
+      <ng-template pTemplate="body" let-sauve>
+        <h3 (dblclick)="onSauveClick(sauve)">{{sauve.nom}} {{sauve.prenom}} {{sauve.valide ? "✔" : "❌ Pas encore validé" }}</h3>
+      </ng-template>
+    </p-table>
+  </div>
+  <div *ngIf="sauves==undefined">
+    Chargement des sauvés...
+  </div>
+  <div *ngIf="sauveteurs!=undefined">
+    <h1>Sauveteurs :</h1>
+    <p-table [value]="sauveteurs">
+      <ng-template pTemplate="body" let-sauveteur>
+        <h3 (dblclick)="onSauveteurClick(sauveteur)">{{sauveteur.nom}} {{sauveteur.prenom}} {{sauveteur.valide ? "✔" : "❌ Pas encore validé" }}</h3>
+      </ng-template>
+    </p-table>
+  </div>
+  <div *ngIf="sauveteurs==undefined">
+    Chargement des sauveteurs...
+  </div>
+</div>

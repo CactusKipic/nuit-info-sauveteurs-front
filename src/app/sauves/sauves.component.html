@@ -1,0 +1,33 @@
+<div>
+
+  <div>
+    <input type="text" pInputText [(ngModel)]="searchName">
+    <p-button label="Rechercher" (onClick)="onSearch()"></p-button>
+  </div>
+
+  <div *ngIf="listSauves!=undefined">
+    <p-table [value]="listSauves" sortField="nom">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>
+            Nom
+          </th>
+          <th>
+            Prénom
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-sauve>
+        <tr (dblclick)="onSauveClick(sauve)">
+          <th>
+            {{sauve.nom}}
+          </th>
+          <th>
+            {{sauve.prenom}}
+          </th>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+</div>

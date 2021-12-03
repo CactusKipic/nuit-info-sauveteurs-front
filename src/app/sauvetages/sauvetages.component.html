@@ -1,0 +1,47 @@
+<div>
+
+  <div>
+    <input type="text" pInputText [(ngModel)]="searchName">
+    <p-button label="Rechercher" (onClick)="onSearch()"></p-button>
+    <div>
+      Date de début
+      <input type="date" [(ngModel)]="searchStartDate">
+    </div>
+    <div>
+      Date de fin
+      <input type="date" [(ngModel)]="searchEndDate">
+    </div>
+    <p-button label="x" (onClick)="delDate()"></p-button>
+  </div>
+
+  <div *ngIf="listSauvetages!=undefined">
+    <p-table [value]="listSauvetages" dataKey="id" sortField="date">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>
+            Date
+          </th>
+          <th>
+            Nom
+          </th>
+          <th>
+            Vérifié
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-sauvetage>
+        <tr (dblclick)="onSauvetageClick(sauvetage)">
+          <th>
+            {{sauvetage.date}}
+          </th>
+          <th>
+            {{sauvetage.nom}}
+          </th>
+          <th>
+            {{sauvetage.valide}}
+          </th>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
