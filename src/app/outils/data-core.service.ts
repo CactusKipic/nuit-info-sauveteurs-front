@@ -9,7 +9,7 @@ import {Sauveteur} from "./modeles/sauveteur";
 })
 export class DataCoreService {
 
-  private urlAPI: string = "http://localhost:8080/";
+  private urlAPI: string = "http://localhost:3025/";
 
   constructor(private http: HttpClient) {
 
@@ -69,7 +69,7 @@ export class DataCoreService {
   }
 
   public async addSauveToSauvetage(sauve: Sauve, sauvetage: Sauvetage): Promise<void> {
-    let url = this.urlAPI + 'sauveteur/addsauvetage?idsauve='+sauve.id+"&idsauvetage="+sauvetage.id;
+    let url = this.urlAPI + 'sauve/addsauvetage?idsauve='+sauve.id+"&idsauvetage="+sauvetage.id;
     return <void> await this.http.get(url).toPromise();
   }
 
